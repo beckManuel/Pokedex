@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/destination_detail"
-        android:name="com.tekever.pokedex.PokemonDetailFragment"
+        android:name="com.tekever.pokedex.presentation.detail.PokemonDetailFragment"
         android:label="pokemon_detail_fragment"
         tools:layout="@layout/pokemon_detail_fragment" />
     <fragment
         android:id="@+id/home_destination"
-        android:name="com.tekever.pokedex.HomeFragment"
+        android:name="com.tekever.pokedex.presentation.home.HomeFragment"
         android:label="home_fragment"
         tools:layout="@layout/home_fragment" >
         <action
@@ -21,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/splash_destination"
-        android:name="com.tekever.pokedex.SplashScreenFragment"
+        android:name="com.tekever.pokedex.presentation.splash.SplashScreenFragment"
         android:label="fragment_splash_screen"
         tools:layout="@layout/fragment_splash_screen" >
         <action

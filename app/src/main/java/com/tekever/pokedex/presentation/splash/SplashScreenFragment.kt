@@ -1,4 +1,4 @@
-package com.tekever.pokedex
+package com.tekever.pokedex.presentation.splash
 
 import android.os.Bundle
 import android.os.Handler
@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.ActionOnlyNavDirections
 import androidx.navigation.fragment.findNavController
+import com.tekever.pokedex.R
 
 class SplashScreenFragment : Fragment() {
 
@@ -28,7 +29,9 @@ class SplashScreenFragment : Fragment() {
 
         Handler().postDelayed({
             findNavController().navigate(ActionOnlyNavDirections(R.id.action_splash_destination_to_home_destination))
-        }, TRANSITION_DELAY)
+        },
+            TRANSITION_DELAY
+        )
 
 
     }

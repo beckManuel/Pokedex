@@ -1,4 +1,4 @@
-package com.tekever.pokedex
+package com.tekever.pokedex.presentation.detail
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -6,11 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.tekever.pokedex.R
 
 class PokemonDetailFragment : Fragment() {
 
     companion object {
-        fun newInstance() = PokemonDetailFragment()
+        fun newInstance() =
+            PokemonDetailFragment()
     }
 
     private lateinit var viewModel: PokemonDetailViewModel

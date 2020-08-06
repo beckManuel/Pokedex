@@ -1,4 +1,4 @@
-package com.tekever.pokedex
+package com.tekever.pokedex.presentation.home
 
 import androidx.lifecycle.ViewModel
 

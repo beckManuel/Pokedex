@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.ActionOnlyNavDirections
+import androidx.navigation.fragment.findNavController
 import com.tekever.pokedex.R
 import com.tekever.pokedex.databinding.HomeFragmentBinding
 
@@ -18,8 +20,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var viewModel: HomeViewModel
     private var _binding: HomeFragmentBinding? = null
-    // This property is only valid between onCreateView and
-// onDestroyView.
+
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -28,8 +29,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = HomeFragmentBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -37,11 +37,12 @@ class HomeFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         binding.allButton.setOnClickListener {
             print("Navigate to All Pokemon Page")
+            findNavController().navigate(ActionOnlyNavDirections(R.id.action_home_destination_to_pokemonListFragment))
         }
         binding.searchByIDButton.setOnClickListener {
             print("Navigate to Search Pokemon Page")
         }
-      
+
     }
 
 }

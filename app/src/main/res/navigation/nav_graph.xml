@@ -18,6 +18,9 @@
         <action
             android:id="@+id/actionDetail"
             app:destination="@id/destination_detail" />
+        <action
+            android:id="@+id/action_home_destination_to_pokemonListFragment"
+            app:destination="@id/pokemon_list_destination" />
     </fragment>
     <fragment
         android:id="@+id/splash_destination"
@@ -28,4 +31,9 @@
             android:id="@+id/action_splash_destination_to_home_destination"
             app:destination="@id/home_destination" />
     </fragment>
+    <fragment
+        android:id="@+id/pokemon_list_destination"
+        android:name="com.tekever.pokedex.presentation.pokemon_list.PokemonListFragment"
+        android:label="fragment_item_list"
+        tools:layout="@layout/fragment_item_list" />
 </navigation>

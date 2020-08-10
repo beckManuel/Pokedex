@@ -37,7 +37,7 @@ class HomeFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         binding.allButton.setOnClickListener {
             print("Navigate to All Pokemon Page")
-            findNavController().navigate(ActionOnlyNavDirections(R.id.action_home_destination_to_pokemonListFragment))
+            findNavController().navigate(ActionOnlyNavDirections(R.id.pokeList_destination))
         }
         binding.searchByIDButton.setOnClickListener {
             print("Navigate to Search Pokemon Page")

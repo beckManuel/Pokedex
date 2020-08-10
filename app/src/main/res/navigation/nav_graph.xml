@@ -19,21 +19,21 @@
             android:id="@+id/actionDetail"
             app:destination="@id/destination_detail" />
         <action
-            android:id="@+id/action_home_destination_to_pokemonListFragment"
-            app:destination="@id/pokemon_list_destination" />
+            android:id="@+id/action_home_destination_to_pokeList"
+            app:destination="@id/pokeList_destination" />
     </fragment>
     <fragment
         android:id="@+id/splash_destination"
         android:name="com.tekever.pokedex.presentation.splash.SplashScreenFragment"
         android:label="fragment_splash_screen"
-        tools:layout="@layout/fragment_splash_screen" >
+        tools:layout="@layout/splash_screen_fragment" >
         <action
             android:id="@+id/action_splash_destination_to_home_destination"
             app:destination="@id/home_destination" />
     </fragment>
     <fragment
-        android:id="@+id/pokemon_list_destination"
-        android:name="com.tekever.pokedex.presentation.pokemon_list.PokemonListFragment"
-        android:label="fragment_item_list"
-        tools:layout="@layout/fragment_item_list" />
+        android:id="@+id/pokeList_destination"
+        android:name="com.tekever.pokedex.presentation.pokemon_list.PokeListFragment"
+        android:label="poke_list_fragment"
+        tools:layout="@layout/poke_list_fragment" />
 </navigation>

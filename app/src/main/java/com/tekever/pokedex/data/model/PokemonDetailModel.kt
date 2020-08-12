@@ -20,6 +20,7 @@ data class PokemonDetailModel(
     val species: Species,
     val sprites: Sprites,
     val stats: List<Stat>,
+    val types: List<Type>,
     val weight: Int
 )
 
@@ -49,7 +50,6 @@ class Other(
     val artwork: OfficialArtwork
 )
 
-
 data class OfficialArtwork(
     val front_default: String
 )
@@ -60,6 +60,15 @@ data class Stat(
     //val stat: StatX
 )
 
+data class Type(
+    val slot: Int,
+    val type: TypeX
+)
+
+data class TypeX(
+    val name: String,
+    val url: String
+)
 
 data class AbilityX(
     val name: String,

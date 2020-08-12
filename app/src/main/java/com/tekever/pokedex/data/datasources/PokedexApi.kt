@@ -18,7 +18,7 @@ import com.tekever.pokedex.webservices.HttpRequests
 var search_name: String = "null"
 const val LIMIT = "10"
 const val HOST = "https://pokeapi.co/api/v2/"
-var SEARCH_SPECIES = "${HOST}pokemon-species/"
+var SEARCH_SPECIES = "${HOST}pokemon-species?limit=150"
 var SEARCH_SPECIE_BY_NAME = "${HOST}/pokemon/%s/"
 
 

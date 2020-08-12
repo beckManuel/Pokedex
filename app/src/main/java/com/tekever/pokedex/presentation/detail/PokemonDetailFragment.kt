@@ -56,8 +56,13 @@ class PokemonDetailFragment : Fragment() {
         //binding.list.adapter = adapter
         //binding.list.layoutManager = LinearLayoutManager(this.context)
 
-        val textView :TextView = binding.nameView
+        val nametextView :TextView = binding.nameView
+        val idView :TextView = binding.idView
+        val heightView :TextView = binding.heightView
+        val weightView :TextView = binding.weightView
+        val typeView :TextView = binding.typeView
         val imageView : ImageView = binding.imageView
+        val expView : TextView = binding.baseExpView
         val downloadImageTask = DownloadImageTask(imageView)
 
 
@@ -66,7 +71,17 @@ class PokemonDetailFragment : Fragment() {
         viewModel.getPokemonByID(this.context, pokemonName)
         viewModel.pokemon.observe(viewLifecycleOwner) {
             print(it)
-            textView.text = it.name
+            nametextView.text = it.name.capitalize()
+            idView.text = it.id.toString()
+            heightView.text = it.height.toString()
+            weightView.text = it.weight.toString()
+            var types = ""
+            it.types.forEach { type ->
+                var newType =type.type.name.capitalize()
+                types += " $newType"
+            }
+            typeView.text = types
+            expView.text = it.base_experience.toString()
             val test = downloadImageTask.execute(it.sprites.other.artwork.front_default).get()
             imageView.setImageBitmap(test)
 

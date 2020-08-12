@@ -17,8 +17,10 @@
 package com.tekever.pokedex
 
 import android.app.Application
-import com.tekever.pokedex.di.AppComponent
-import com.tekever.pokedex.di.DaggerAppComponent
+import com.tekever.pokedex.data.di.DaggerAppComponent
+import com.tekever.pokedex.data.di.DaggerSingletonComponent
+
+
 import com.tekever.pokedex.presentation.pokemon_list.PokeListFragment
 
 
@@ -26,5 +28,6 @@ open class PokedexApp : Application() {
 
     // Instance of the AppComponent that will be used by all the Activities in the project
     val appComponent = DaggerAppComponent.create()
+    val singletonComponent = DaggerSingletonComponent.create()
 
 }

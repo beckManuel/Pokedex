@@ -9,7 +9,11 @@
         android:id="@+id/destination_detail"
         android:name="com.tekever.pokedex.presentation.detail.PokemonDetailFragment"
         android:label="pokemon_detail_fragment"
-        tools:layout="@layout/pokemon_detail_fragment" />
+        tools:layout="@layout/pokemon_detail_fragment" >
+        <argument
+            android:name="pokemon_name"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/home_destination"
         android:name="com.tekever.pokedex.presentation.home.HomeFragment"
@@ -35,5 +39,9 @@
         android:id="@+id/pokeList_destination"
         android:name="com.tekever.pokedex.presentation.pokemon_list.PokeListFragment"
         android:label="poke_list_fragment"
-        tools:layout="@layout/poke_list_fragment" />
+        tools:layout="@layout/poke_list_fragment" >
+        <action
+            android:id="@+id/action_pokeList_destination_to_destination_detail"
+            app:destination="@id/destination_detail" />
+    </fragment>
 </navigation>

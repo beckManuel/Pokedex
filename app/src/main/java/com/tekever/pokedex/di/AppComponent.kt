@@ -1,4 +1,4 @@
-package com.tekever.pokedex.data.di
+package com.tekever.pokedex.di
 
 /**
  * Created by Diogo Bicho on 10/08/2020.
@@ -21,9 +21,6 @@ interface AppComponent {
     fun inject(fragment: PokeListFragment)
     fun inject(fragment: PokemonDetailFragment)
 
-
-
-    //fun inject(viewModel: PokeListViewModel)
 }
 
 @Component

@@ -9,11 +9,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.observe
+import com.squareup.picasso.Picasso
 import com.tekever.pokedex.R
-import com.tekever.pokedex.data.di.DaggerAppComponent
 import com.tekever.pokedex.databinding.PokemonDetailFragmentBinding
+import com.tekever.pokedex.di.DaggerAppComponent
 import com.tekever.pokedex.presentation.pokemon_list.PokeListFragment
 import com.tekever.pokedex.webservices.DownloadImageTask
+import java.lang.Thread.sleep
 import javax.inject.Inject
 
 class PokemonDetailFragment : Fragment() {
@@ -33,11 +35,13 @@ class PokemonDetailFragment : Fragment() {
 
     private val binding get() = _binding!! //FIXME: bang-bang
     private var pokemonName = ""
+    lateinit var picasso: Picasso
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        picasso = Picasso.get()
         _binding = DataBindingUtil.inflate(inflater, R.layout.pokemon_detail_fragment, container, false)
         DaggerAppComponent.create().inject(this)
         return binding.root
@@ -68,9 +72,14 @@ class PokemonDetailFragment : Fragment() {
 
 
         //call viewModel, set observers
-        viewModel.getPokemonByID(this.context, pokemonName)
+        viewModel.getPokemonByID(context = this.context, pokemonName = pokemonName)
         viewModel.pokemon.observe(viewLifecycleOwner) {
-            print(it)
+            picasso
+                .load(it.sprites.other.artwork.front_default)
+                .noFade()
+                .resize(300,300)
+                .centerCrop()
+                .into(imageView)
             nametextView.text = it.name.capitalize()
             idView.text = it.id.toString()
             heightView.text = it.height.toString()
@@ -82,11 +91,13 @@ class PokemonDetailFragment : Fragment() {
             }
             typeView.text = types
             expView.text = it.base_experience.toString()
-            val test = downloadImageTask.execute(it.sprites.other.artwork.front_default).get()
-            imageView.setImageBitmap(test)
 
-            //adapter.setItems(it)
-            // update UI
+
+            //set progress bar invisible
+            binding.progressBar.visibility = View.INVISIBLE
+            //set data view visible
+            binding.layoutView.visibility = View.VISIBLE
+
         }
 
 

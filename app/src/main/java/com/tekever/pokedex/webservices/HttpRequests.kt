@@ -6,9 +6,7 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
-import com.tekever.pokedex.PokedexApp
-import com.tekever.pokedex.presentation.MainActivity
-import com.tekever.pokedex.presentation.pokemon_list.PokeListFragment
+
 
 /**
  * Created by Diogo Bicho on 11/08/2020.

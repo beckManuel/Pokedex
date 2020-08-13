@@ -20,11 +20,11 @@ class PokedexRepository @Inject constructor() {
 
 
 
-    fun fetchAllPokemons(context: Context?){
+    fun fetchAllPokemons(context: Context?, generation: Int){
 
         var aux: MutableLiveData<SpeciesSearchResult> = MutableLiveData()
         var error: LiveData<AppError> = MutableLiveData()
-        PokedexApi(context).fetchAllPokemon("",
+        PokedexApi(context).fetchAllPokemon(generation,
             {
                 //(pokemonSpecies as MutableLiveData).value = it
                 print(it);

@@ -1,15 +1,16 @@
 package com.tekever.pokedex.presentation.home
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.ActionOnlyNavDirections
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.tekever.pokedex.R
 import com.tekever.pokedex.databinding.HomeFragmentBinding
+import com.tekever.pokedex.presentation.pokemon_list.PokeListFragmentDirections
 
 
 class HomeFragment : Fragment() {
@@ -18,7 +19,7 @@ class HomeFragment : Fragment() {
         fun newInstance() = HomeFragment()
     }
 
-    private lateinit var viewModel: HomeViewModel
+
     private var _binding: HomeFragmentBinding? = null
 
     private val binding get() = _binding!!
@@ -34,13 +35,22 @@ class HomeFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
-        binding.allButton.setOnClickListener {
-            print("Navigate to All Pokemon Page")
-            findNavController().navigate(ActionOnlyNavDirections(R.id.pokeList_destination))
+
+        binding.genOneButton.setOnClickListener {
+            print("Navigate to First Generation List")
+            val action = HomeFragmentDirections.actionHomeDestinationToPokeList(1)
+            it.findNavController().navigate(action)
         }
-        binding.searchByIDButton.setOnClickListener {
-            print("Navigate to Search Pokemon Page")
+        binding.genTwoButton.setOnClickListener {
+            print("Navigate to Seccond Generation List")
+            val action = HomeFragmentDirections.actionHomeDestinationToPokeList(2)
+            it.findNavController().navigate(action)
+        }
+
+        binding.genThreeButton.setOnClickListener {
+            print("Navigate to Third Generation List")
+            val action = HomeFragmentDirections.actionHomeDestinationToPokeList(3)
+            it.findNavController().navigate(action)
         }
 
     }

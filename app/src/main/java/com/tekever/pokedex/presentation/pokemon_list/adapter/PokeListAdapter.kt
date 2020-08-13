@@ -11,7 +11,6 @@ import com.tekever.pokedex.data.model.PokemonModel
 import com.tekever.pokedex.data.model.SpeciesSearchResult
 import com.tekever.pokedex.presentation.pokemon_list.PokeListFragmentDirections
 
-import com.tekever.pokedex.presentation.search.dummy.DummyContent.DummyItem
 
 
 class PokeListAdapter() : RecyclerView.Adapter<PokeListAdapter.ViewHolder>() {
@@ -52,3 +51,4 @@ class PokeListAdapter() : RecyclerView.Adapter<PokeListAdapter.ViewHolder>() {
 
     }
 }
+

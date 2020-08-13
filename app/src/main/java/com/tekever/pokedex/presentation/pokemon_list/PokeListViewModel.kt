@@ -25,11 +25,11 @@ class PokeListViewModel @Inject constructor(private val _repository: PokedexRepo
     }
 
 
-    fun getAllPokemons(context: Context?) {
+    fun getAllPokemons(context: Context?, genetation :Int) {
 
         viewModelScope.launch {
           //  _repository.test()
-            _repository.fetchAllPokemons(context)
+            _repository.fetchAllPokemons(context = context, generation = genetation)
         }
 
 

@@ -32,15 +32,6 @@ abstract class PokedexDB : RoomDatabase() {
                     // Delete all content here.
                     pokemonsDao.deleteAll()
 
-                    // Add sample words.
-//                    var game = Games("Jogo do mata", "das0", "asd")
-//                    gamesDao.insert(game)
-//                    game = Games("Football", "das0", "asd")
-//                    gamesDao.insert(game)
-//
-//                    // TODO: Add your own words!
-//                    game = Games("Jogo do mata 2", "das0", "asd")
-//                    gamesDao.insert(game)
                 }
             }
         }

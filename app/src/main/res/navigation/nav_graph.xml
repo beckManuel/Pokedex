@@ -20,9 +20,6 @@
         android:label="home_fragment"
         tools:layout="@layout/home_fragment" >
         <action
-            android:id="@+id/actionDetail"
-            app:destination="@id/destination_detail" />
-        <action
             android:id="@+id/action_home_destination_to_pokeList"
             app:destination="@id/pokeList_destination" />
     </fragment>
@@ -43,5 +40,8 @@
         <action
             android:id="@+id/action_pokeList_destination_to_destination_detail"
             app:destination="@id/destination_detail" />
+        <argument
+            android:name="generation"
+            app:argType="integer" />
     </fragment>
 </navigation>

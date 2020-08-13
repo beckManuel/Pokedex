@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
@@ -12,7 +13,6 @@ import com.tekever.pokedex.R
 import com.tekever.pokedex.databinding.PokeListFragmentBinding
 import com.tekever.pokedex.di.DaggerAppComponent
 import com.tekever.pokedex.presentation.pokemon_list.adapter.PokeListAdapter
-import kotlinx.android.synthetic.main.poke_list_fragment.*
 import javax.inject.Inject
 
 
@@ -51,6 +51,14 @@ class PokeListFragment : Fragment() {
             adapter.setItems(it)
         }
 
+        viewModel.error.observe(viewLifecycleOwner) {
+            val toast = Toast.makeText(
+                this.context,
+                "Something went wrong",
+                Toast.LENGTH_SHORT
+            )
+            toast.show()
+        }
     }
 
     private fun setBindings() {

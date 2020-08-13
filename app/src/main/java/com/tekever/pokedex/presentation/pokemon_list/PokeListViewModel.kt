@@ -7,12 +7,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.tekever.pokedex.data.model.SpeciesSearchResult
 import com.tekever.pokedex.data.repositories.PokedexRepository
+import com.tekever.pokedex.webservices.AppError
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class PokeListViewModel @Inject constructor(private val _repository: PokedexRepository) :
     ViewModel() {
     var pokemonSpecies: LiveData<SpeciesSearchResult> = _repository.pokemonSpecies
+    var error : LiveData<AppError> = _repository.error
 
 
     fun getAllPokemons(context: Context?, genetation: Int) {

@@ -22,21 +22,18 @@ class PokeListFragment : Fragment() {
         fun newInstance() = PokeListFragment()
     }
 
-    // @Inject annotated fields will be provided by Dagger
     @Inject
     lateinit var viewModel: PokeListViewModel
-
-    private var generation : Int = 1
-
-    //private val viewModel: PokeListViewModel by viewModels()
+    private var generation: Int = 1
     private var _binding: PokeListFragmentBinding? = null
-
     private val binding get() = _binding!! //FIXME: bang-bang
+    private lateinit var adapter: PokeListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        arguments?.let { generation = PokeListFragmentArgs.fromBundle(it).generation }
         _binding = DataBindingUtil.inflate(inflater, R.layout.poke_list_fragment, container, false)
         DaggerAppComponent.create().inject(this)
         return binding.root
@@ -44,26 +41,24 @@ class PokeListFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        //binding.viewModel = viewModel
-        binding.lifecycleOwner = this
-        binding.executePendingBindings()
+        setBindings()
+        setViewModelObservers()
+    }
 
-        //get the 'safe args' arguments
-        arguments?.let {  generation = PokeListFragmentArgs.fromBundle(it).generation }
-
-        val adapter = PokeListAdapter()
-        binding.list.adapter = adapter
-        binding.list.layoutManager = LinearLayoutManager(this.context)
-
-
-        //call viewModel, set observers
+    private fun setViewModelObservers() {
         viewModel.getAllPokemons(context = this.context, genetation = generation)
         viewModel.pokemonSpecies.observe(viewLifecycleOwner) {
-            print(it)
             adapter.setItems(it)
-            // update UI
         }
 
+    }
+
+    private fun setBindings() {
+        binding.lifecycleOwner = this
+        binding.executePendingBindings()
+        adapter = PokeListAdapter()
+        binding.list.adapter = adapter
+        binding.list.layoutManager = LinearLayoutManager(this.context)
     }
 
 }

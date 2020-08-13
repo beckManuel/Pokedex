@@ -10,30 +10,16 @@ import com.tekever.pokedex.data.repositories.PokedexRepository
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class PokeListViewModel @Inject constructor(private val _repository: PokedexRepository) : ViewModel() {
-    val selected = MutableLiveData<String>()
-    var  pokemonSpecies : LiveData<SpeciesSearchResult>
-
-    init {
-
-        pokemonSpecies = _repository.pokemonSpecies
-    }
+class PokeListViewModel @Inject constructor(private val _repository: PokedexRepository) :
+    ViewModel() {
+    var pokemonSpecies: LiveData<SpeciesSearchResult> = _repository.pokemonSpecies
 
 
-    fun select(item: String) {
-        selected.value = item
-    }
-
-
-    fun getAllPokemons(context: Context?, genetation :Int) {
-
+    fun getAllPokemons(context: Context?, genetation: Int) {
         viewModelScope.launch {
-          //  _repository.test()
             _repository.fetchAllPokemons(context = context, generation = genetation)
         }
 
-
-       //_repository.fetchAllPokemons(context)
 
     }
 

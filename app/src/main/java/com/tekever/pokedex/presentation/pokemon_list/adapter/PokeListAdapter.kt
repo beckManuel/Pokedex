@@ -24,19 +24,17 @@ class PokeListAdapter() : RecyclerView.Adapter<PokeListAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
-       // holder.idView.text = item.name
         holder.contentView.text = item.name.toUpperCase()
         holder.constraintView.setOnClickListener {
-            //TODO: separate and the pokemon name
             val action = PokeListFragmentDirections.actionPokeListDestinationToDestinationDetail(item.name)
             it.findNavController().navigate(action)
         };
     }
 
+
     override fun getItemCount(): Int = values.size
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        //val idView: TextView = view.findViewById(R.id.item_number)
         val contentView: TextView = view.findViewById(R.id.content)
         val constraintView: View = view.findViewById(R.id.constraintView)
 
@@ -48,7 +46,8 @@ class PokeListAdapter() : RecyclerView.Adapter<PokeListAdapter.ViewHolder>() {
     internal fun setItems(games: SpeciesSearchResult) {
         this.values = games.results
         notifyDataSetChanged()
-
     }
+
+
 }
 

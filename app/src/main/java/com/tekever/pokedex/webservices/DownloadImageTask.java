@@ -12,10 +12,6 @@ import java.util.ArrayList;
 public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
     ImageView bmImage;
     Bitmap img;
-    int position;
-    ArrayList<Object> array;
-
-
 
     public DownloadImageTask(ImageView bmImage) {
         this.bmImage =bmImage;

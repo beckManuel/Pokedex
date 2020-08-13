@@ -35,7 +35,11 @@ class HomeFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        setButtonListeners()
 
+    }
+
+    private fun setButtonListeners() {
         binding.genOneButton.setOnClickListener {
             print("Navigate to First Generation List")
             val action = HomeFragmentDirections.actionHomeDestinationToPokeList(1)
@@ -52,7 +56,6 @@ class HomeFragment : Fragment() {
             val action = HomeFragmentDirections.actionHomeDestinationToPokeList(3)
             it.findNavController().navigate(action)
         }
-
     }
 
 }

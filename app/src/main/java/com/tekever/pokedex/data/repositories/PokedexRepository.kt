@@ -15,21 +15,15 @@ import javax.inject.Inject
  */
 class PokedexRepository @Inject constructor() {
 
-    val pokemonSpecies: MutableLiveData<SpeciesSearchResult> =  MutableLiveData()
-    val pokemon: MutableLiveData<PokemonDetailModel> =  MutableLiveData()
+    val pokemonSpecies: MutableLiveData<SpeciesSearchResult> = MutableLiveData()
+    val pokemon: MutableLiveData<PokemonDetailModel> = MutableLiveData()
 
 
-
-    fun fetchAllPokemons(context: Context?, generation: Int){
-
-        var aux: MutableLiveData<SpeciesSearchResult> = MutableLiveData()
+    fun fetchAllPokemons(context: Context?, generation: Int) {
         var error: LiveData<AppError> = MutableLiveData()
         PokedexApi(context).fetchAllPokemon(generation,
             {
-                //(pokemonSpecies as MutableLiveData).value = it
-                print(it);
                 pokemonSpecies.postValue(it)
-
             },
             {
                 (error as MutableLiveData).value = it
@@ -39,16 +33,11 @@ class PokedexRepository @Inject constructor() {
     }
 
 
-    fun fetchPokemonByID(context: Context?, pokemonName: String){
-
-        var aux: MutableLiveData<PokemonDetailModel> = MutableLiveData()
+    fun fetchPokemonByID(context: Context?, pokemonName: String) {
         var error: LiveData<AppError> = MutableLiveData()
-        PokedexApi(context).fetchPokemonById(pokemonName,  //FIXME!
+        PokedexApi(context).fetchPokemonById(pokemonName,
             {
-                //(pokemonSpecies as MutableLiveData).value = it
-                print(it);
                 pokemon.postValue(it)
-
             },
             {
                 (error as MutableLiveData).value = it

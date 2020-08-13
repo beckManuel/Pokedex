@@ -35,11 +35,10 @@ class PokedexApi(context: Context?) {
         onSuccess: (SpeciesSearchResult) -> Unit,
         onError: (AppError) -> Unit
     ) {
-        val gen_url = selectGeneration(generation)
+        val url = selectGeneration(generation)
 
-        Log.i(TAG, "Making Request to Uri $gen_url")
-        httpRequestes.get(gen_url, onSuccess, onError)
-
+        Log.i(TAG, "Making Request to Uri $url")
+        httpRequestes.get(url, onSuccess, onError)
     }
 
 

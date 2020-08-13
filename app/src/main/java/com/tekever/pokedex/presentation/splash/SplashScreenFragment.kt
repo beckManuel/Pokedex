@@ -28,10 +28,10 @@ class SplashScreenFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        goToMain()
+        goToHomePage()
     }
 
-    private fun goToMain() {
+    private fun goToHomePage() {
         activity?.lifecycleScope?.launch {
             delay(TRANSITION_DELAY)
             findNavController().navigate(ActionOnlyNavDirections(R.id.action_splash_destination_to_home_destination))
